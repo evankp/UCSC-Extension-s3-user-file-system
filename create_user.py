@@ -44,9 +44,6 @@ def create_user(username, password, email):
     file_operations.download_file('users', 'users.yaml')
     users = file_operations.read_config()
 
-    if users is None:
-        users = {}
-
     users[username] = {
         'password': password,
         'email': email
@@ -60,7 +57,7 @@ def create_user(username, password, email):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Command line to create user in a AWS bucket system -- requires aws cli, boto3, and python 3')
+    parser = argparse.ArgumentParser(description='Command line to create user in a AWS bucket system.')
 
     parser.add_argument('username', help='Username for the new user')
     parser.add_argument('password', help='Password for new user')
@@ -68,5 +65,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    print('Creating user...')
     init_buckets(args.username)
     create_user(args.username, args.password, args.email)
+    print('Created User')

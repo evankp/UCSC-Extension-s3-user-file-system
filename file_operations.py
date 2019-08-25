@@ -22,6 +22,11 @@ def upload_file(bucket, local_file, key=None):
 def read_config():
     with open('users.yaml', 'r') as stream:
         try:
-            return yaml.safe_load(stream)
+            data = yaml.safe_load(stream)
+
+            if data is None:
+                data = {}
+
+            return data
         except yaml.YAMLError as err:
             print(err)
