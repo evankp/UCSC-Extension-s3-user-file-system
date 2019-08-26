@@ -16,7 +16,11 @@ def upload_file(bucket, local_file, key=None):
     if key is None:
         key = local_file
 
-    s3res.Bucket(f'{PREFIX}-{bucket}').upload_file(local_file, key)
+    try:
+        s3res.Bucket(f'{PREFIX}-{bucket}').upload_file(local_file, key)
+    except FileNotFoundError:
+        print('File not found on system.')
+        exit(1)
 
 
 def read_config():
