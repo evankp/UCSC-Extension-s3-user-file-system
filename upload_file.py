@@ -15,7 +15,7 @@ if __name__ == '__main__':
         description="Uploads file to user's bucket, user has to have been created with create_user.py")
     parser.add_argument('username', help='Username of the user')
     parser.add_argument('password', help='Password of the user')
-    parser.add_argument('file_key', help='Key of the file in the bucket. Must wrap in quotes for spaces. ')
+    parser.add_argument('file_key', help='Key of the file in the bucket. Must wrap in quotes for spaces.')
     parser.add_argument('local_file', help='Local path of the file on system. Must wrap in quotes for spaces.')
 
     args = parser.parse_args()
