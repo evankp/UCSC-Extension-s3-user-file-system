@@ -3,32 +3,11 @@
 import argparse
 import boto3
 import file_operations
+import user_functions
 import os
 
 s3 = boto3.client('s3', region_name='us-west-2')
 """ :type: pyboto3.s3 """
-
-PREFIX = 'ucsc-evankp'
-
-
-def check_user_info(user, password):
-    buckets = [bucket['Name'].replace(f'{PREFIX}-', '') for bucket in s3.list_buckets()['Buckets'] if
-               bucket['Name'].startswith(PREFIX)]
-
-    if not all(bucket in buckets for bucket in ['users', user]):
-        print('Please execute create_user.py first')
-        exit(1)
-
-    file_operations.download_file('users', 'users.yaml')
-    users = file_operations.read_config()
-
-    if password != users[user]['password']:
-        print('Password does not match')
-        os.remove('users.yaml')
-        exit(1)
-
-    os.remove('users.yaml')
-    return True
 
 
 if __name__ == '__main__':
@@ -41,7 +20,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    check_user_info(args.username, args.password)
+    user_functions.check_info(args.username, args.password)
     print('Uploading file...')
     file_operations.upload_file(args.username, args.local_file, args.file_key)
     print('File Upload')
