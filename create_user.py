@@ -10,7 +10,7 @@ import file_operations
 s3 = boto3.client('s3', region_name='us-west-2')
 """ :type: pyboto3.s3 """
 
-PREFIX = 'ucsc-evankp'
+PREFIX = 'ucsc-evankp-v2'
 
 
 def init_buckets(user):

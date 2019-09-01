@@ -4,7 +4,6 @@ import argparse
 import boto3
 import file_operations
 import user_functions
-import os
 
 s3 = boto3.client('s3', region_name='us-west-2')
 """ :type: pyboto3.s3 """

@@ -6,7 +6,7 @@ import yaml
 import os
 
 s3res = boto3.resource('s3', region_name='us-west-2')
-PREFIX = 'ucsc-evankp'
+PREFIX = 'ucsc-evankp-v2'
 
 
 def download_file(bucket, key, location=None):

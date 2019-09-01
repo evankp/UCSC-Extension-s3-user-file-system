@@ -8,7 +8,7 @@ import user_functions
 s3 = boto3.client('s3', region_name='us-west-2')
 """ :type: pyboto3.s3 """
 
-PREFIX = 'ucsc-evankp'
+PREFIX = 'ucsc-evankp-v2'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Deletes a file from the user's bucket")

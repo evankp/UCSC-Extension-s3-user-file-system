@@ -3,7 +3,7 @@
 import boto3
 import sys
 
-PREFIX = 'ucsc-evankp'
+PREFIX = 'ucsc-evankp-v2'
 s3 = boto3.client('s3')
 """ :type: pyboto3.s3 """
 
