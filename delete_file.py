@@ -22,8 +22,17 @@ if __name__ == '__main__':
 
     user_functions.check_info(args.username, args.password)
 
-    objects_to_delete = [{'Key': file} for file in args.keys]
-    response = s3.delete_objects(Bucket=f'{PREFIX}-{args.username}', Delete={'Objects': objects_to_delete})
+    objects_to_delete = []
+    for file in args.keys:
+        list_objects = s3.list_objects_v2(Bucket=f'{PREFIX}-{args.username}', Prefix=file)
 
-    for item in response['Deleted']:
-        print(f"Deleted {item['Key']}")
+        if 'Contents' not in list_objects:
+            print(f'{file} does not exist in bucket')
+        else:
+            objects_to_delete.append({'Key': file})
+
+    if objects_to_delete:
+        response = s3.delete_objects(Bucket=f'{PREFIX}-{args.username}', Delete={'Objects': objects_to_delete})
+
+        for item in response['Deleted']:
+            print(f"Deleted {item['Key']}")

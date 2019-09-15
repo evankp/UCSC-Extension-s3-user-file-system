@@ -14,7 +14,7 @@ def check_info(username, password):
                bucket['Name'].startswith(PREFIX)]
 
     if not all(bucket in buckets for bucket in ['users', username]):
-        print('Please execute create_user.py first')
+        print('Please execute create_user.py first, as either user does not exist or bucket system is not setup.')
         exit(1)
 
     file_operations.download_file('users', 'users.yaml')

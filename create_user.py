@@ -68,4 +68,4 @@ if __name__ == '__main__':
     print('Creating user...')
     init_buckets(args.username)
     create_user(args.username, args.password, args.email)
-    print('Created User')
+    print(f'Created User with {args.username}, {args.password}, {args.email}')

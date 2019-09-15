@@ -19,4 +19,4 @@ if __name__ == '__main__':
     user_functions.check_info(args.username, args.password)
     print('Downloading files...')
     file_operations.download_file(args.username, args.key, args.local_file)
-    print('Downloaded Files.')
+    print(f'Downloaded File to {args.local_file}')

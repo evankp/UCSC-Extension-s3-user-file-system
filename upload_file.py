@@ -23,4 +23,4 @@ if __name__ == '__main__':
     user_functions.check_info(args.username, args.password)
     print('Uploading file...')
     file_operations.upload_file(args.username, args.local_file, args.file_key)
-    print('File Upload')
+    print(f'File Uploaded with params {args.username}, {args.password}, {args.local_file}, {args.file_key}')
